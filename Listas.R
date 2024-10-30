@@ -1,0 +1,89 @@
+#### Crea una lista que contenga al menos cuatro tipos diferentes de datos (incluyendo al menos un vector, una matriz, y un data frame). Luego, escribe código para acceder a cada uno de estos elementos por su índice.
+
+lista1<-list(
+  v<-c(1,2,3,4),
+  m<- matrix(sample(1:100,4),2),
+  n<- data.frame(nombres<-c("Alfonso","Sancho", "Ricardo","Guillermo"), edad<-c(29,32,76,12)),
+  s<- 13,
+  a<-"Abraham"
+)
+
+lista1
+
+lista1[[1]] #Accede al vector de la lista
+
+lista1[[2]] #Accede a la matriz de la lista
+
+lista1[[3]] #Accede al data frame de la lista 
+
+lista1[[3]]$nombres[[1]] #Accede al primer elemento del primer vector del data frame de la lsita 
+
+lista1[[4]] #Accede al valor numerico de la lista
+
+lista1[[5]] #Accede al caracter de la lista 
+
+
+
+#### Añade un nuevo elemento a la compleja_lista que sea otra lista conteniendo información relevante a un experimento microbiológico (p.ej., fechas, resultados de crecimiento, tipo de medio de cultivo). Accede a un elemento específico dentro de esta lista anidada.
+
+# Pegamos compleja lista
+
+compleja_lista <- list(
+  numero = 42,
+  vector = c(1, 2, 3),
+  matriz = matrix(c(1, 2, 3, 4), nrow = 2),
+  data_frame = data.frame(nombre = c("E. coli", "S. aureus"), gram = c("+", "-"))
+)
+
+print(compleja_lista)
+
+lista_adicional<-list(
+  medios<-c("PDA","LB","SS","YPD","minimo"),
+  horas<- c(7,8,9,5,4,9),
+  crecimiento<-c(1,0,0,0,1,1,0,1)
+)
+
+compleja_lista[[5]]<-lista_adicional #Incorporamos la nueva lista a compleja_lista,la adicionamos en la proxima posición de la lista original, en este caso [[5]]
+
+compleja_lista
+
+compleja_lista[[5]][[1]] # Entramos al primer elemento de la lista anidada,colocamos la posición de la lista anidada dentro de la lista original y posteriormente el elemento de la lista anidada que queremos ver 
+
+compleja_lista[[5]][[2]]
+
+compleja_lista[[5]][[3]]
+
+
+### Almacena datos de producción en experimentos de fermentación.
+
+# Crea una lista fermentacion con 4 elementos, cada uno representando un experimento de fermentación.
+#Cada elemento debe ser una lista con: Cepa, Condición, ProducciónEtanol.
+#Encuentra la condición con la mayor producción de etanol.
+
+fermentacion<- list(
+  
+  fermentacion1<- data.frame(cepa<-"K12", con<- "microaerofilica",prod<-45),
+  
+  fermentacion2<- data.frame(cepa<-"K", con<- "aerofilica",prod<-20),
+  
+  fermentacion3<- data.frame(cepa<-"S", con<- "anaerobia",prod<-90)
+)
+
+fermentacion
+
+mayor_etanol<- if (fermentacion[[1]]$prod > fermentacion[[2]]$prod & fermentacion[[1]]$prod > fermentacion[[3]]$prod){
+  
+  print(paste("La cepa con mayor produccion de etanol es: ",fermentacion[[1]]$cepa,"La condicion es: ", fermentacion[[1]]$con,"La producción es de: ", fermentacion[[1]]$prod,"ml"))
+
+  } else if (fermentacion[[2]]$prod > fermentacion[[1]]$prod & fermentacion[[2]]$prod > fermentacion[[3]]$prod){
+  
+  print(paste("La cepa con mayor produccion de etanol es: ",fermentacion[[2]]$cepa,"La condicion es: ", fermentacion[[2]]$con,"La producción es de: ", fermentacion[[2]]$prod,"ml"))
+  } else if (fermentacion[[3]]$prod > fermentacion[[1]]$prod & fermentacion[[3]]$prod > fermentacion[[2]]$prod){
+    
+    print(paste("La cepa con mayor produccion de etanol es: ",fermentacion[[3]]$cepa,"La condicion es: ", fermentacion[[3]]$con,"La producción es de: ", fermentacion[[3]]$prod,"ml"))
+  }
+
+
+
+
+
